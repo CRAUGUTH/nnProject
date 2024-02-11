@@ -48,3 +48,4 @@ Users will have the option to select specific genres of playlists they want crea
 Through the execution of these stages, we aim to create a comprehensive music genre classification system that streamlines playlist organization on Spotify.
 (Intro/Conclusion, Stage 1, and Stage 2: Trent)
 (Stage 3 and Stage 4: Conner)
+(Formatting: ChatGPT)
