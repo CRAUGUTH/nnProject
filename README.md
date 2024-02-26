@@ -56,7 +56,8 @@ Through the execution of these stages, we aim to create a comprehensive music ge
 This dataset we found from Kaggle represents an extensive amount of musical data, comprising approximately 90,000 individual tracks along with their associated Spotify metadata. This metadata encapsulates a variety of attributes, ranging from rudimentary identifiers such as unique track IDs and artist names to more intricate features including time signature and genre classifications. The dataset contains over 125 distinct genres, cataloged within a structured CSV format.
 
 # Link
-For access to the dataset, refer to the following link: https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset/download?datasetVersionNumber=1
+For access to the dataset, refer to the following link: 
+https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset/download?datasetVersionNumber=1
 
 # About the Data
 Similar to the Canvas page , we advocate for a 60/20/20 allocation ratio for training, validation, and testing, respectively. This allocation scheme serves to mitigate the risk of inadvertently testing on songs already present within the training data, thereby strengthening the integrity of our evaluation process. The execution of this partitioning methodology will be conducted via a randomized distribution protocol, upholding a proportional representation of songs from each genre across all stages. This approach aims to preemptively neutralize any biases stemming from the over or underrepresentation of specific genres during the training phase, thus ensuring a more equitable learning trajectory.
@@ -65,4 +66,6 @@ The dataset comprises a vast array of nearly 90,000 unique musical compositions,
 
 # Sample of the data
 Here are a few exemplar snippets from our expansive dataset:
+
+
 
