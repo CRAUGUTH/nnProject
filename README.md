@@ -66,6 +66,4 @@ The dataset comprises a vast array of nearly 90,000 unique musical compositions,
 
 # Sample of the data
 Here are a few exemplar snippets from our expansive dataset:
-
-
-
+[Download sample CSV file](sample.csv)
