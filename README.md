@@ -86,13 +86,13 @@ Diving into music genre classification through deep learning reveals both challe
 
 - **Integrating Musical Features**: Whether it's the tempo or the instrumentalness, MLPs can take in a wide range of musical features and learn their importance for genre classification, making accurate predictions based on the data.
 
-## Input Layer
+### Input Layer
 
 The dimensionality of the input layer directly corresponds to the number of features extracted from the music tracks. These features are crucial as they encapsulate the essence of the audio signal, including acousticness, tempo, danceability, energy, and speechiness. Selecting a comprehensive set of features is most important to enable the network to discern the nuanced differences between genres.
 
 In the present configuration of our model, we've opted to utilize the full spectrum of features available from Spotify (each one transformable into a numerical float) to guide the classification of songs into their respective genres. Yet, the true ambition of our endeavor extends beyond the breadth of data at our disposal. Our vision zeroes in on achieving genre classification with a minimalist approach, to refine the essence of genre identification to the leanest possible set of musical features. This pursuit not only promises a model that's sleek and efficient but also challenges us to uncover which attributes are truly pivotal in distinguishing one genre from another, marking a step towards a more refined and focused application of deep learning in music analysis.
 
-## Hidden Layers
+### Hidden Layers
 
 The architecture includes two densely connected hidden layers with 256 and 128 neurons, respectively. This configuration has been selected to strike a balance between model complexity and computational efficiency.
 
@@ -102,11 +102,11 @@ The architecture includes two densely connected hidden layers with 256 and 128 n
 
 - **Dropout**: A dropout rate of 0.2 helps prevent overfitting by randomly dropping units (along with their connections) during the training phase. This forces the network to learn redundant representations and improves generalization.
 
-## Output Layer and Loss Function
+### Output Layer and Loss Function
 
 The softmax function in the output layer provides a probability distribution over the genre classes, allowing for a direct interpretation of the model's predictions as confidence scores. Cross-Entropy Loss is adept at comparing the predicted probability distribution with the true distribution, making it a natural fit for classification tasks.
 
-## Optimization Algorithm
+### Optimization Algorithm
 
 Adam is selected for its adaptive learning rate properties, which adjust the learning rate for each parameter based on estimations of the first and second moments of the gradients. This adaptability makes Adam highly efficient for tasks with large and high-dimensional datasets.
 
