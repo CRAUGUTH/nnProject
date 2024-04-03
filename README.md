@@ -67,3 +67,81 @@ The dataset comprises a vast array of nearly 90,000 unique musical compositions,
 ## Sample of the data
 Here are a few exemplar snippets from our expansive dataset:
 [Download sample CSV file](sample.csv)
+
+# First Solution and Validation Accuracy
+
+## Introduction
+
+Diving into music genre classification through deep learning reveals both challenges and opportunities. When attempting to distinguish between rock and classical music just by looking at the data, it becomes apparent it's not just about the beats per minute or the presence of electric guitars but understanding the essence of what makes a genre unique. This is where a Multilayer Perceptron (MLP) comes into play. MLPs are adept at deciphering the complex, layered information within music tracks, from the song's time signature to its ‘danceability’, making them an ideal candidate for this task of classifying songs by interpreted genre.
+
+## Neural Network Architecture Justification
+
+### Why a Multilayer Perceptron (MLP) neural network?
+
+- **Deciphering Complex Patterns**: Music genres are a complex mix of rhythms, tempos, and harmonies. MLPs shine in picking apart these intricate details, learning to identify the subtle differences that our ears might miss.
+
+- **Straightforward and Powerful**: An MLP's structure is relatively simple—input, hidden layers, output, making its implementation relatively simple. Although simple, MLPs have the power to model the boundaries that separate genres, no matter how blended or nuanced.
+
+- **Scalability for Songs**: With the vast amount of music available, any model we use needs to handle big datasets. Again, MLPs are perfect for this, especially when trained with efficient algorithms like Adam, ensuring they can learn from as many tracks as possible.
+
+- **Integrating Musical Features**: Whether it's the tempo or the instrumentalness, MLPs can take in a wide range of musical features and learn their importance for genre classification, making accurate predictions based on the data.
+
+## Input Layer
+
+The dimensionality of the input layer directly corresponds to the number of features extracted from the music tracks. These features are crucial as they encapsulate the essence of the audio signal, including acousticness, tempo, danceability, energy, and speechiness. Selecting a comprehensive set of features is most important to enable the network to discern the nuanced differences between genres.
+
+In the present configuration of our model, we've opted to utilize the full spectrum of features available from Spotify (each one transformable into a numerical float) to guide the classification of songs into their respective genres. Yet, the true ambition of our endeavor extends beyond the breadth of data at our disposal. Our vision zeroes in on achieving genre classification with a minimalist approach, to refine the essence of genre identification to the leanest possible set of musical features. This pursuit not only promises a model that's sleek and efficient but also challenges us to uncover which attributes are truly pivotal in distinguishing one genre from another, marking a step towards a more refined and focused application of deep learning in music analysis.
+
+## Hidden Layers
+
+The architecture includes two densely connected hidden layers with 256 and 128 neurons, respectively. This configuration has been selected to strike a balance between model complexity and computational efficiency.
+
+- **ReLU Activation**: The Rectified Linear Unit (ReLU) function is chosen for its ability to introduce non-linearity without affecting the gradients significantly, which helps in alleviating the vanishing gradient problem.
+
+- **Batch Normalization**: This technique normalizes the input to each layer to have a mean of zero and a variance of one. It stabilizes the learning process and has been shown to accelerate convergence.
+
+- **Dropout**: A dropout rate of 0.2 helps prevent overfitting by randomly dropping units (along with their connections) during the training phase. This forces the network to learn redundant representations and improves generalization.
+
+## Output Layer and Loss Function
+
+The softmax function in the output layer provides a probability distribution over the genre classes, allowing for a direct interpretation of the model's predictions as confidence scores. Cross-Entropy Loss is adept at comparing the predicted probability distribution with the true distribution, making it a natural fit for classification tasks.
+
+## Optimization Algorithm
+
+Adam is selected for its adaptive learning rate properties, which adjust the learning rate for each parameter based on estimations of the first and second moments of the gradients. This adaptability makes Adam highly efficient for tasks with large and high-dimensional datasets.
+
+## Classification Accuracy and Performance Metrics
+
+The progression of training and validation accuracy over epochs illustrates the model's ability to learn effectively from the dataset. A notable achievement is the model's validation accuracy, which outperforms the training accuracy in the later epochs. This unusual pattern suggests a well-generalizing model, possibly due to effective regularization strategies like dropout and batch normalization.
+
+The F1 score, chosen for its sensitivity to the balance between precision and recall, further validates the model's performance. Given the imbalanced nature of music datasets, where some genres may be more prevalent than others, the F1 score provides a more accurate reflection of the model's effectiveness across all genres.
+
+## Observations and Improvement Ideas
+
+Despite our model's achievements, there's always scope for refinement in the realm of machine learning projects. The observed discrepancy between training and validation performance metrics hints at potential overfitting issues, even with our current preventive strategies. Notably, our model's medal accuracy plateauing at 82% is far from ideal, underscoring the necessity for further optimization and adjustment. This gap between our expectations and the current performance not only highlights the challenges inherent in achieving high accuracy with minimal features but also serves as a motivator for exploring innovative strategies to enhance model efficacy and generalizability.
+
+- **Exploring Architectures**: Additional layers or different setups could reveal patterns we're currently missing.
+
+- **Enhanced Regularization**: Tweaking dropout rates or integrating L2 regularization might tighten the model's focus, reducing overfitting.
+
+- **Optimization Tweaks**: Fine-tuning Adam's settings or exploring new algorithms could refine the learning process.
+
+## Conclusion
+
+This deep dive into using an MLP for music genre classification has highlighted the architecture's suitability and the potential for further refinement. The journey from input to output layer, through the challenges of learning and generalization, showcases the balance struck between model complexity and performance. Future improvements, rooted in data augmentation, architectural adjustments, and optimization tweaks, have the potential to enhance the model's accuracy and applicability, pushing the boundaries of what's possible in music information retrieval.
+
+## Team Contributions
+
+- **Conner Rauguth**: 
+  - Implemented MusicData class.
+  - Modified given ‘evaluate’ function.
+  - Experimented with different optimizers and schedulers to improve model accuracy.
+  - Wrote Introduction and Observation and Improvement Ideas sections.
+
+- **Trent Delp**: 
+  - Implemented MLP class.
+  - Implemented f1 score calculation.
+  - Modified given training loop.
+  - Wrote Neural Network architecture justification and Conclusion sections.
+
+(Note: Every implementation has been reviewed by the other with unmentioned features being implemented in collaboration)
