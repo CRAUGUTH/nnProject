@@ -145,3 +145,67 @@ This deep dive into using an MLP for music genre classification has highlighted 
   - Wrote Neural Network architecture justification and Conclusion sections.
 
 (Note: Every implementation has been reviewed by the other with unmentioned features being implemented in collaboration)
+
+# Final Report
+
+## 1. Description of the Test Database
+
+The database for our music genre classification project was sourced from a publicly available dataset on Kaggle. This dataset comprises a comprehensive collection of over 120,000 songs, evenly distributed across 120+ genres with 1,000 songs per genre. To evaluate the generalization capabilities of our neural network-based models, we strategically adjusted the composition of our test database to address initial discrepancies observed during the training phase.
+
+Initially, our model training inadvertently included the indexing of songs as a feature. These indices were inherently correlated with the genres due to the structured arrangement of songs in the dataset, leading to an inflated training accuracy of 86%. Upon identifying this oversight, we excluded the indices from the feature set, which normalized the accuracy to a more realistic figure of 30%. 
+
+To further refine our approach and enhance the function of the model, we narrowed the scope of genres from 120 to 7, focusing on hip-hop, acoustic, classical, country, EDM, pop, and R&B. This reduction was aimed at managing the complexity and improving the model's focus on more distinct musical characteristics, thereby enhancing its predictive precision in practical scenarios.
+
+For the final testing phase, the dataset was reduced to 7,000 songs, with these songs being randomly split into training, validation, and test subsets using the `random_split` method. This random distribution helps in evaluating the model’s performance under unbiased conditions and ensures that the training, validation, and test sets are representative of the overall dataset.
+
+## 2. Sample Model Accuracies Post Dataset Reduction
+
+The classification model achieved the following accuracies:
+- **Training Accuracy:** 69.71%
+- **Validation Accuracy:** 69.07%
+- **Test Accuracy:** 69.43%
+
+These results are based on the same metrics used in the previous deliverable, thus ensuring consistency in performance evaluation across different phases of the project. 
+
+## 3. Performance Analysis and Proposed Improvements
+
+Despite the implementation of a refined approach and the establishment of a focused dataset, the test accuracy hovered around 70%. Notably, a critical issue emerged with the model disproportionately classifying most Spotify songs as R&B, even though the test accuracy suggested a relatively high correctness rate. For reference these Spotify songs were from genres in which the model did not train on; these genres include heavy metal, hyperpop, etc. This phenomenon raises substantial concerns regarding the model’s actual predictive capability of songs from genres not trained on.
+
+### Analysis of Discrepancies in Accuracy
+
+The accuracies achieved using the same model on different subsets post-reduction were 69.71% for training, 69.07% for validation, and 69.43% for testing. The similarity in these results confirms consistent model behavior across different data splits. However, the issue of the model predominantly labeling tracks as R&B despite these accuracies suggests that while the model generally predicts correctly across the board, it might be leveraging skewed class distributions or specific dominant features that are over-represented in the R&B genre within the dataset.
+
+### Misclassification Trends and Underlying Issues
+
+A significant challenge arises from how genres were labeled in our dataset. The original dataset creator labeled genres based on their discretion, as Spotify does not provide genre information with song IDs. This subjective labeling could lead to inconsistencies, particularly in a genre as diverse as R&B, which encompasses a wide range of musical styles and sub-genres. The broad categorization could have inadvertently introduced a bias towards R&B characteristics, leading the model to learn these as predominant, thereby skewing predictions disproportionately towards R&B.
+
+### Proposed Improvements
+
+To address these issues and improve the model’s performance and reliability, the following strategies could be implemented:
+
+- **Enhanced Labeling Consistency:** Engage in a thorough review and possible reclassification of the genre labels provided in the dataset to ensure that they accurately reflect the musical characteristics of each song. This might involve collaboration with musicologists or the use of more sophisticated automated genre-detection algorithms.
+
+- **Feature Re-evaluation:** Reassess and potentially expand the feature set to include more diverse and discriminating attributes that could reduce genre misclassification. This could involve a deeper analysis of lyrical content, and the use of advanced signal processing techniques to extract more nuanced audio features, which are not provided by Spotify.
+
+- **Model Complexity Adjustment:** Experiment with different model architectures that might be better suited to handle the complexity and diversity of musical genre classification. For instance, integrating a multi-layer perceptron with convolutional layers might capture both global and local patterns in music more effectively.
+
+By addressing the classification skew towards R&B and enhancing the robustness of our genre labeling and feature extraction processes, we could improve the model's accuracy and its ability to generalize across a truly diverse musical dataset.
+
+## Team Contributions
+
+- **Conner Rauguth**: 
+  - Implemented MusicData class.
+  - Modified given ‘evaluate’ function.
+  - Experimented with different optimizers and schedulers to improve model accuracy.
+  - Wrote Introduction and Observation and Improvement Ideas sections.
+  - Made dataset alterations
+  - Spotify Integration
+
+- **Trent Delp**: 
+  - Implemented MLP class.
+  - Implemented f1 score calculation.
+  - Modified given training loop.
+  - Wrote Neural Network architecture justification and Conclusion sections.
+  - Wrote final report
+
+(Note: Every implementation has been reviewed by the other with unmentioned features being implemented in collaboration)
